@@ -7,11 +7,11 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class WaterRespository {
+public class WaterRepository {
 
     private WaterDAO waterDAO;
 
-    public WaterRespository(Application application) {
+    public WaterRepository(Application application) {
         WaterDatabase db = WaterDatabase.getDatabase(application);
         waterDAO = db.waterDAO();
     }
@@ -59,7 +59,7 @@ public class WaterRespository {
     }
 
 
-    public LiveData<List<WaterRecord>> getAllRecords(String day) {
+    public LiveData<List<WaterRecord>> getAllRecords() {
         return waterDAO.getAllRecords();
     }
 

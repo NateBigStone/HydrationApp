@@ -27,6 +27,10 @@ public class WaterRecord {
         return glasses;
     }
 
+    public void setGlasses(int glasses) {
+        this.glasses = glasses;
+    }
+
     @Override
     public String toString() {
         return "WaterRecord{" +
