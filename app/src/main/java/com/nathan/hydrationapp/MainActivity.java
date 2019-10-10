@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             "Tuesday",
             "Wednesday",
             "Thursday",
-            "Friday",
+            "FriYAY!",
             "Saturday",
             "Sunday"
     };
@@ -31,12 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create View model , associate with this Activity
+        // Create View model, associate with this Activity
         // The fragment will also be able to access it
         waterViewModel = new WaterViewModel(getApplication());
-
-//        WaterRecord example = new WaterRecord("Monday", 2);
-//        waterViewModel.insert(example);
 
         //debuging
         waterViewModel.getAllRecords().observe(this, new Observer<List<WaterRecord>>() {
@@ -47,18 +44,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // iterate of array of days and creates a new water record
         for (String day: DAYS) {
             WaterRecord record = new WaterRecord(day, 0);
             Log.d(TAG, "Inserting" + record);
             waterViewModel.insert(record);
         }
 
-//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//        WaterFragment waterFragment = WaterFragment.newInstance("Monday");
-//
-//        ft.add(R.id.content, waterFragment);
-//        ft.commit();
-
+        //The viewpager swipe feature
         ViewPager viewPager = findViewById(R.id.water_view_pager);
         WaterViewPagerAdapter waterViewPagerAdapter = new WaterViewPagerAdapter(getSupportFragmentManager(), DAYS);
         viewPager.setAdapter(waterViewPagerAdapter);

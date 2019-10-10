@@ -1,11 +1,9 @@
 package com.nathan.hydrationapp;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
@@ -16,10 +14,6 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class WaterFragment extends Fragment {
 
     private static final String TAG = "WATER_FRAGMENT";
@@ -38,9 +32,8 @@ public class WaterFragment extends Fragment {
 
     private static final String ARG_DAY_STRING = "arg_day_string";
 
-    public WaterFragment() {
-        // Required empty public constructor
-    }
+    // Required empty public constructor
+    public WaterFragment() {}
 
     public static WaterFragment newInstance(String day) {
         WaterFragment fragment = new WaterFragment();
@@ -84,8 +77,8 @@ public class WaterFragment extends Fragment {
             }
         });
 
+        //add water button
         addButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
@@ -99,21 +92,19 @@ public class WaterFragment extends Fragment {
             }
         });
 
+        //set the glasses value to 0
         resetButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (waterRecord == null) {
                     return;
                 }
-
                 waterRecord.setGlasses(0);
                 waterViewModel.update(waterRecord);
             }
         });
 
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_water, container, false);
         return view;
     }
 
